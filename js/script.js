@@ -177,6 +177,18 @@ function setupTypingEffect() {
     typeEffect();
   }
 }
+function setupReadMore() {
+  const toggleBtn = document.getElementById('toggleAbout');
+  const moreContent = document.getElementById('moreAbout');
+
+  if (!toggleBtn || !moreContent) return;
+
+  toggleBtn.addEventListener('click', () => {
+    const isHidden = moreContent.classList.toggle('show');
+    toggleBtn.textContent = isHidden ? 'Read Less' : 'Read More';
+  });
+}
+
 
 // Initialize all features on page load
 document.addEventListener("DOMContentLoaded", () => {
@@ -188,5 +200,5 @@ document.addEventListener("DOMContentLoaded", () => {
   setupContactForm();
   setupTypingEffect();
   setupPersonalizedGreeting();
-
+  setupReadMore();
 });
