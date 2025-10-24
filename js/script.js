@@ -72,6 +72,37 @@ function setupGreeting() {
   }
 }
 
+// Personalized greeting with name storage
+function setupPersonalizedGreeting() {
+  const greeting = document.getElementById('greeting');
+  const promptBox = document.getElementById('namePrompt');
+  const input = document.getElementById('username');
+  const saveBtn = document.getElementById('saveName');
+
+  function updateGreeting(name) {
+    const h = new Date().getHours();
+    const msg = h < 12 ? 'Good morning' : (h < 18 ? 'Good afternoon' : 'Good evening');
+    greeting.textContent = `${msg}, ${name}!`;
+  }
+
+  const storedName = localStorage.getItem('visitorName');
+  if (storedName) {
+    updateGreeting(storedName);
+    promptBox.classList.add('hidden');
+  } else {
+    promptBox.classList.remove('hidden');
+    saveBtn.addEventListener('click', () => {
+      const name = input.value.trim();
+      if (name) {
+        localStorage.setItem('visitorName', name);
+        updateGreeting(name);
+        promptBox.classList.add('hidden');
+      }
+    });
+  }
+}
+
+
 // Footer year
 function setupFooterYear() {
   const yearEl = document.getElementById('year');
@@ -156,4 +187,6 @@ document.addEventListener("DOMContentLoaded", () => {
   setupFooterYear();
   setupContactForm();
   setupTypingEffect();
+  setupPersonalizedGreeting();
+
 });
