@@ -27,7 +27,7 @@ This project is **front-end only** — no backend setup required.
 ```bash
 git clone https://github.com/arbody17/assignment-2.git
 cd assignment-2
-
+```
 ## 2. Open the Project  
 
 ### **Option A — Directly in Browser**  
