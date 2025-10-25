@@ -1,204 +1,208 @@
-// Smooth scroll for in-page links
-function setupSmoothScroll() {
-  document.querySelectorAll('a[href^="#"]').forEach(a => {
-    a.addEventListener('click', (e) => {
-      const id = a.getAttribute('href');
-      if (id.length > 1) {
-        const target = document.querySelector(id);
-        if (target) {
-          e.preventDefault();
-          target.scrollIntoView({ behavior: 'smooth', block: 'start' });
-
-          const navLinks = document.getElementById('navLinks');
-          if (navLinks && navLinks.getAttribute('aria-expanded') === 'true') {
-            navLinks.setAttribute('aria-expanded', 'false');
-          }
-        }
-      }
-    });
-  });
-}
-
-// Mobile nav toggle
-function setupMobileNav() {
-  const menuToggle = document.getElementById('menuToggle');
-  const navLinks = document.getElementById('navLinks');
-
-  if (menuToggle && navLinks) {
-    menuToggle.addEventListener('click', () => {
-      const expanded = navLinks.getAttribute('aria-expanded') === 'true';
-      navLinks.setAttribute('aria-expanded', String(!expanded));
-      menuToggle.setAttribute('aria-expanded', String(!expanded));
-    });
-  }
-}
-
+// ============================
 // Theme toggle with localStorage
+// ============================
 function setupThemeToggle() {
   const root = document.documentElement;
-  const themeToggle = document.getElementById('themeToggle');
+  const themeToggle = document.getElementById("themeToggle");
 
   function setTheme(next) {
-    root.setAttribute('data-theme', next);
-    localStorage.setItem('theme', next);
-    if (themeToggle) {
-      themeToggle.setAttribute('aria-pressed', String(next === 'dark'));
-    }
+    root.setAttribute("data-theme", next);
+    localStorage.setItem("theme", next);
+    themeToggle.setAttribute("aria-pressed", String(next === "dark"));
   }
 
-  // Load stored theme
-  const stored = localStorage.getItem('theme');
-  if (stored) {
-    setTheme(stored);
-  }
+  const stored = localStorage.getItem("theme");
+  if (stored) setTheme(stored);
 
-  // Toggle theme on click
-  if (themeToggle) {
-    themeToggle.addEventListener('click', () => {
-      const current = root.getAttribute('data-theme') || 'auto';
-      const next = current === 'dark' ? 'light' : 'dark';
-      setTheme(next);
-    });
-  }
-}
-
-// Greeting message
-function setupGreeting() {
-  const greeting = document.getElementById('greeting');
-  if (greeting) {
-    const h = new Date().getHours();
-    const msg = h < 12 ? 'Good morning' : (h < 18 ? 'Good afternoon' : 'Good evening');
-    greeting.textContent = msg;
-  }
-}
-
-// Personalized greeting with name storage
-function setupPersonalizedGreeting() {
-  const greeting = document.getElementById('greeting');
-  const promptBox = document.getElementById('namePrompt');
-  const input = document.getElementById('username');
-  const saveBtn = document.getElementById('saveName');
-
-  function updateGreeting(name) {
-    const h = new Date().getHours();
-    const msg = h < 12 ? 'Good morning' : (h < 18 ? 'Good afternoon' : 'Good evening');
-    greeting.textContent = `${msg}, ${name}!`;
-  }
-
-  const storedName = localStorage.getItem('visitorName');
-  if (storedName) {
-    updateGreeting(storedName);
-    promptBox.classList.add('hidden');
-  } else {
-    promptBox.classList.remove('hidden');
-    saveBtn.addEventListener('click', () => {
-      const name = input.value.trim();
-      if (name) {
-        localStorage.setItem('visitorName', name);
-        updateGreeting(name);
-        promptBox.classList.add('hidden');
-      }
-    });
-  }
-}
-
-
-// Footer year
-function setupFooterYear() {
-  const yearEl = document.getElementById('year');
-  if (yearEl) {
-    yearEl.textContent = new Date().getFullYear();
-  }
-}
-
-// Contact form validation
-function setupContactForm() {
-  const form = document.getElementById('contactForm');
-  if (form) {
-    form.addEventListener('submit', (e) => {
-      e.preventDefault();
-      let ok = true;
-
-      form.querySelectorAll('.error').forEach(el => el.textContent = '');
-
-      if (!form.name.value.trim()) {
-        ok = false; form.name.nextElementSibling.textContent = 'Please enter your name.';
-      }
-      if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(form.email.value)) {
-        ok = false; form.email.nextElementSibling.textContent = 'Enter a valid email.';
-      }
-      if (form.message.value.trim().length < 5) {
-        ok = false; form.message.nextElementSibling.textContent = 'Please write a longer message.';
-      }
-
-      if (ok) {
-        alert('✅ Thanks! This is a demo form only.');
-        form.reset();
-      }
-    });
-  }
-}
-
-// Typing effect for tagline
-function setupTypingEffect() {
-  const typingElement = document.getElementById("typing");
-  if (typingElement) {
-    const phrases = [
-      "Make it simple. Make it work. Make it better.",
-      "Turning ideas into reality.",
-      "Engineering with passion and purpose."
-    ];
-    
-    let currentPhrase = 0;
-    let currentChar = 0;
-    let isDeleting = false;
-
-    function typeEffect() {
-      const phrase = phrases[currentPhrase];
-      if (!isDeleting) {
-        typingElement.textContent = phrase.substring(0, currentChar + 1);
-        currentChar++;
-        if (currentChar === phrase.length) {
-          isDeleting = true;
-          setTimeout(typeEffect, 1500); // pause before deleting
-          return;
-        }
-      } else {
-        typingElement.textContent = phrase.substring(0, currentChar - 1);
-        currentChar--;
-        if (currentChar === 0) {
-          isDeleting = false;
-          currentPhrase = (currentPhrase + 1) % phrases.length;
-        }
-      }
-      setTimeout(typeEffect, isDeleting ? 50 : 100);
-    }
-
-    typeEffect();
-  }
-}
-function setupReadMore() {
-  const toggleBtn = document.getElementById('toggleAbout');
-  const moreContent = document.getElementById('moreAbout');
-
-  if (!toggleBtn || !moreContent) return;
-
-  toggleBtn.addEventListener('click', () => {
-    const isHidden = moreContent.classList.toggle('show');
-    toggleBtn.textContent = isHidden ? 'Read Less' : 'Read More';
+  themeToggle.addEventListener("click", () => {
+    const current = root.getAttribute("data-theme") || "light";
+    const next = current === "dark" ? "light" : "dark";
+    setTheme(next);
   });
 }
 
+// ============================
+// Typing Greeting (looped)
+// ============================
+function setupTypingGreeting() {
+  const greetingEl = document.getElementById("greeting");
+  const usernameInput = document.getElementById("username");
+  const saveButton = document.getElementById("saveName");
+  if (!greetingEl) return;
 
-// Initialize all features on page load
+  const hour = new Date().getHours();
+  const baseGreeting =
+    hour < 12 ? "Good morning" : hour < 18 ? "Good afternoon" : "Good evening";
+
+  const storedName = localStorage.getItem("visitorName") || "friend";
+  let userName = storedName;
+
+  const phrases = [
+    `${baseGreeting}, ${userName}!`,
+    "Welcome to my humble portfolio.",
+    "Hope you're having a great day!",
+    "Let's build something amazing together!"
+  ];
+
+  let current = 0;
+  let isDeleting = false;
+  let text = "";
+
+  function type() {
+    const fullText = phrases[current];
+    text = isDeleting
+      ? fullText.substring(0, text.length - 1)
+      : fullText.substring(0, text.length + 1);
+
+    greetingEl.textContent = text;
+
+    let speed = isDeleting ? 60 : 100;
+    if (!isDeleting && text === fullText) {
+      speed = 1500; // pause after full text
+      isDeleting = true;
+    } else if (isDeleting && text === "") {
+      isDeleting = false;
+      current = (current + 1) % phrases.length;
+      speed = 500;
+    }
+
+    setTimeout(type, speed);
+  }
+
+  // update name dynamically when saved
+  saveButton.addEventListener("click", () => {
+    const newName = usernameInput.value.trim();
+    if (newName) {
+      localStorage.setItem("visitorName", newName);
+      userName = newName;
+      phrases[0] = `${baseGreeting}, ${userName}!`;
+    }
+  });
+
+  type();
+}
+
+// ============================
+// Tabs switching
+// ============================
+function setupTabs() {
+  const tabButtons = document.querySelectorAll(".tab-btn");
+  const sections = document.querySelectorAll(".section");
+
+  tabButtons.forEach((btn) => {
+    btn.addEventListener("click", () => {
+      tabButtons.forEach((b) => b.classList.remove("active"));
+      btn.classList.add("active");
+
+      const target = btn.dataset.target;
+      sections.forEach((sec) => {
+        sec.classList.remove("active-section");
+        if (sec.id === target) sec.classList.add("active-section");
+      });
+    });
+  });
+}
+
+// ============================
+// Read More / Read Less
+// ============================
+function setupReadMore() {
+  const toggleBtn = document.getElementById("toggleAbout");
+  const hidden = document.getElementById("moreAbout");
+
+  toggleBtn.addEventListener("click", () => {
+    hidden.classList.toggle("show");
+    toggleBtn.textContent = hidden.classList.contains("show")
+      ? "Read Less"
+      : "Read More";
+  });
+}
+
+// ============================
+// Contact Form with Email Validation + Funny Popup
+// ============================
+function setupContactForm() {
+  const form = document.getElementById("contactForm");
+  const emailInput = document.getElementById("email");
+  if (!form || !emailInput) return;
+
+  const emailSuggestions = ["gmail.com", "hotmail.com", "outlook.com", "yahoo.com"];
+
+  // Add datalist for email domains
+  const dataList = document.createElement("datalist");
+  dataList.id = "emailSuggestions";
+  emailSuggestions.forEach((domain) => {
+    const option = document.createElement("option");
+    option.value = "@" + domain;
+    dataList.appendChild(option);
+  });
+  emailInput.setAttribute("list", "emailSuggestions");
+  document.body.appendChild(dataList);
+
+  // Email validation function
+  function isValidEmail(email) {
+    const pattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+    return pattern.test(email);
+  }
+
+  form.addEventListener("submit", (e) => {
+    e.preventDefault();
+
+    const name = form.name.value.trim();
+    const email = form.email.value.trim();
+    const message = form.message.value.trim();
+
+    if (!name || !email || !message) {
+      alert("🧐 Please fill all fields, genius!");
+      return;
+    }
+
+    if (!isValidEmail(email)) {
+      alert("🚨 Invalid email! Please enter a proper email address (e.g., name@gmail.com).");
+      return;
+    }
+
+    // ✅ Funny success popup
+    const popup = document.createElement("div");
+    popup.style.position = "fixed";
+    popup.style.top = "50%";
+    popup.style.left = "50%";
+    popup.style.transform = "translate(-50%, -50%)";
+    popup.style.background = "var(--card)";
+    popup.style.color = "var(--text)";
+    popup.style.padding = "1.5rem 2rem";
+    popup.style.borderRadius = "1rem";
+    popup.style.boxShadow = "0 8px 25px rgba(0,0,0,0.4)";
+    popup.style.zIndex = "9999";
+    popup.style.textAlign = "center";
+    popup.innerHTML = `
+      <h3>✅ Message Sent Successfully!</h3>
+      <p>😂 Your message just went to the void... but we’ll pretend it was delivered successfully! 👍🤖</p>
+      <p><span style="font-size:2rem;">✨👍💬</span></p>
+    `;
+
+    document.body.appendChild(popup);
+    setTimeout(() => popup.remove(), 4000);
+    form.reset();
+  });
+}
+
+// ============================
+// Footer year
+// ============================
+function setupFooterYear() {
+  const yearEl = document.getElementById("year");
+  if (yearEl) yearEl.textContent = new Date().getFullYear();
+}
+
+// ============================
+// Init all
+// ============================
 document.addEventListener("DOMContentLoaded", () => {
-  setupSmoothScroll();
-  setupMobileNav();
   setupThemeToggle();
-  setupGreeting();
+  setupTypingGreeting();
+  setupTabs();
+  setupReadMore();
   setupFooterYear();
   setupContactForm();
-  setupTypingEffect();
-  setupPersonalizedGreeting();
-  setupReadMore();
 });
