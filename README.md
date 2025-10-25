@@ -1,16 +1,21 @@
 # 🌐 Personal Portfolio Website  
 
 A personal portfolio website built with **HTML**, **CSS**, and **JavaScript**.  
-It showcases my work, projects, and contact details in a **modern, responsive design**.  
+It showcases my work, projects, and contact details in a **modern, interactive, and responsive design**.  
 
 ---
 
 ## ✨ Features  
-- 📱 Responsive design for desktop and mobile  
-- 🌗 Dark/Light theme toggle with persistence  
-- ⌨️ Typing effect for tagline  
-- 🖼️ Interactive project cards with hover effects  
-- 📩 Contact form with basic front-end validation  
+- 📱 Fully responsive for all screen sizes (desktop, tablet, and mobile)  
+- 🌗 **Dark/Light mode toggle** with saved user preference using `localStorage`  
+- ⌨️ **Typing and deleting animation** for dynamic greeting text  
+- 🧠 **Personalized name greeting** that updates and stores visitor name  
+- 💬 **Motivational sentences loop** after the greeting animation  
+- 📧 **Smart contact form** with email validation and domain suggestions (e.g., `@gmail.com`, `@hotmail.com`)  
+- 😂 **Funny “message sent” popup** with a demo thumbs-up animation  
+- 🧭 **Scroll-to-top footer button** for smooth navigation back to the top  
+- 📄 **About Me** section with “Read More / Read Less” toggle  
+- 🖼️ **Interactive project cards** with hover animations and shadows  
 
 ---
 
@@ -20,22 +25,21 @@ This project is **front-end only** — no backend setup required.
 
 ### 1. Clone the Repository  
 ```bash
-git clone https://github.com/arbody17/assignment-1.git
-cd assignment-1
-```  
+git clone https://github.com/arbody17/assignment-2.git
+cd assignment-2
 
-### 2. Open the Project  
+## 2. Open the Project  
 
-**Option A — Directly in Browser**  
+### **Option A — Directly in Browser**  
 - Navigate to the project folder  
 - Double-click `index.html`  
 - The portfolio will open in your default browser  
 
-**Option B — Local Development (Recommended)**  
-- Open folder in **VS Code** (or another IDE)  
-- Install **Live Server** extension (if using VS Code)  
+### **Option B — Local Development (Recommended)**  
+- Open the folder in **VS Code** (or another IDE)  
+- Install the **Live Server** extension  
 - Right-click `index.html` → *Open with Live Server*  
-- The project will run at `http://127.0.0.1:5500` (or similar)  
+- The project will run at `http://127.0.0.1:5500` (or a similar address)  
 
 ---
 
@@ -51,11 +55,18 @@ For more details, see:
 
 ---
 
-## Learning Outcomes  
-Through this project, I strengthened my **HTML, CSS, and JavaScript** skills, practiced responsive design, added animations, and learned how to structure documentation professionally.  
+## 🧠 Learning Outcomes  
+Through this project, I enhanced my **front-end development skills** and explored how to create interactive user experiences using pure **JavaScript**.  
+I learned how to:  
+- Build **dynamic UI components** (typing effects, popups, and theme toggles)  
+- Use **localStorage** to maintain user preferences  
+- Validate and enhance **form inputs**  
+- Improve **user engagement** through small animations and humor  
+- Write **cleaner, modular code** with reusable functions  
+
+This assignment helped me understand how to transform static HTML pages into **engaging, user-friendly interfaces**.  
 
 ---
 
 👨‍💻 **Author:** Abdulrahman  
- 
-# assignment-2
+📅 **Assignment 2 — Portfolio Enhancement**

@@ -1,19 +1,27 @@
-# 🌐 Personal Portfolio
+# 🌐 Personal Portfolio  
 
 A personal portfolio website built using **HTML**, **CSS**, and **JavaScript**.  
-It showcases my projects, experience, and contact details in a modern, responsive design.
+It showcases my projects, skills, and contact information in a modern, interactive, and responsive layout.  
 
 ---
 
-## ✨ Features
-- 📱 Responsive layout with **CSS Grid** and **Flexbox**  
-- 🌗 **Dark/Light theme toggle** with `localStorage` persistence  
-- ⌨️ Typing animation effect for the tagline  
-- 🎯 Smooth scrolling navigation  
-- 🖼️ Hover animations on project cards  
-- 📩 Accessible **Contact Form** with basic validation  
+## ✨ Features  
+
+- 📱 **Responsive Design** — Uses CSS Grid and Flexbox for smooth adaptability across all devices.  
+- 🌗 **Dark/Light Theme Toggle** — Switches instantly and saves user preference using `localStorage`.  
+- ⌨️ **Typing & Deleting Animation** — Dynamic greeting that loops motivational messages and personalized name display.  
+- 😎 **Personalized Greeting** — Stores the visitor’s name locally and updates the greeting dynamically.  
+- 📧 **Email Validation & Suggestions** — Validates email format and provides quick domain suggestions (e.g., `@gmail.com`, `@hotmail.com`).  
+- 😂 **Funny “Message Sent” Popup** — Displays a success message with a friendly joke after submitting the contact form.  
+- 🧭 **Smooth Scroll-to-Top Arrow** — Instantly scrolls back to the top of the page when clicked.  
+- 💡 **Read More/Less Toggle** — Expands or collapses the “About” section interactively.  
+- 🖼️ **Project Card Hover Animations** — Interactive cards that highlight upon hovering.  
 
 ---
+
+## 📂 Folder Structure  
+
+
 
 ## 📂 Folder Structure
 ```
@@ -36,47 +44,16 @@ assignment-1/
 
 ---
 
-## ⚙️ How to Run
+
+---
+
+## ⚙️ How to Run  
 
 This project is **fully front-end** (no backend setup required).  
-You can run it locally in a browser or host it online (e.g., **GitHub Pages**, **Netlify**, **Vercel**).
+You can run it locally in a browser or host it online (e.g., **GitHub Pages**, **Netlify**, or **Vercel**).  
 
-### 1. Clone the Repository
-Open a terminal (or Git Bash on Windows) and run:
+### 🧩 Step 1 — Clone the Repository  
+Open your terminal or command prompt and run:  
 ```bash
-git clone https://github.com/arbody17/assignment-1.git
-cd assignment-1
-
-
-2. Open the Project
-Option A — Open Directly
-
-Navigate to the project folder.
-
-Double-click on index.html.
-
-The portfolio will open in your default browser.
-
-Option B — Run on a Local Server (Recommended)
-
-Open the folder in VS Code (or another IDE).
-
-Install the Live Server extension (VS Code).
-
-Right-click index.html → Open with Live Server.
-
-The project will run at http://127.0.0.1:5500
- (or a similar local address).
-
-3. Explore the Features
-
-Toggle Dark/Light Mode (saved automatically).
-
-Hover over Project Cards to see animations.
-
-Watch the tagline being typed dynamically.
-
-Test the Contact Form (demo-only, no backend integration yet).
-
-## 🚀 Live Demo
-👉 [View Portfolio Online]()  
+git clone https://github.com/arbody17/assignment-2.git
+cd assignment-2
